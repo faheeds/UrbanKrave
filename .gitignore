@@ -1,0 +1,8 @@
+node_modules
+.next
+.vercel
+.npm-cache
+*.tsbuildinfo
+.env*
+!.env.example
+design-qa.md

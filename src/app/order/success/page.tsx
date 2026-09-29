@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Page() { return <main className="checkout-page"><div className="kicker">Order update</div><h1>Thanks for your <em>krave.</em></h1><p>Your payment is being confirmed. Please keep your Stripe receipt. We will confirm your order separately after it reaches the kitchen.</p><Link className="button secondary" href="/">Back to Urban Krave</Link></main>; }

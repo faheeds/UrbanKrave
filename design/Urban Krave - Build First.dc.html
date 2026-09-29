@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_ds/classical-5821c408-b6b4-43b1-9bb8-680178541e84/styles.css">
+<script src="_ds/classical-5821c408-b6b4-43b1-9bb8-680178541e84/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:var(--color-neutral-300);-webkit-font-smoothing:antialiased}
+a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-800)}
+button:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
+:root{--color-bg:#FBF5EA;--color-surface:#F3E4CC;--color-accent:#D98A1E;--color-accent-100:#FCEACB;--color-accent-700:#8C4F0E;--color-accent-800:#6B3A08;--uk-saffron:#F2B441;--uk-saffron-100:#FDF0D5;--uk-pom:#B8322A;--uk-pom-700:#8E2019;--uk-olive:#3F5A2A;--uk-olive-100:#E7EED8;--uk-olive-800:#2E4420;--uk-sea:#1E5A78;--uk-sea-100:#DDEBF1;--uk-terra:#C85A2E;--uk-terra-100:#FBE3D6;--uk-terra-800:#7A3014}
+.plate{filter:saturate(1.08) contrast(1.03)!important}
+.btn-primary{background:var(--uk-pom);color:#fff;border-color:var(--uk-pom)}
+.btn-primary:hover{background:var(--uk-pom-700);border-color:var(--uk-pom-700);color:#fff}
+.tag-accent{background:var(--uk-olive-100);color:var(--uk-olive-800)}
+.tag-outline{border-color:var(--uk-terra);color:var(--uk-terra-800)}
+</style>
+</helmet>
+
+<div style="padding:64px 64px 24px;display:flex;flex-direction:column;gap:12px;max-width:1100px;font-family:var(--font-body);color:var(--color-text)">
+<div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700);font-variant-numeric:tabular-nums">Urban Krave · Mediterranean · Seattle delivery kitchen · Direction 1b · Build First</div>
+<div style="font:400 72px/1 var(--font-heading)">Build First: home and the full site.</div>
+<div style="font-size:17px;line-height:1.6;color:var(--color-neutral-800);max-width:860px;text-wrap:pretty">The approved 1b home, with the menu, builder, checkout, tracking, catering and story pages in the same nav, palette and selection style. The builder, menu tabs, dietary filters, tracking stages and catering guest slider are clickable.</div>
+</div>
+
+<section style="padding:32px 64px 64px;display:flex;flex-direction:column;gap:24px;font-family:var(--font-body);color:var(--color-text)">
+<div style="font:400 36px var(--font-heading)">Home</div>
+<div style="display:flex;gap:64px;align-items:flex-start;flex-wrap:wrap">
+
+<!-- ============ 1b ============ -->
+<div id="1b" style="width:1280px;flex:none;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:baseline;gap:14px"><span class="tag tag-outline" style="font-size:14px;padding:4px 12px">1b</span><span style="font:500 30px var(--font-heading)">Build First</span><span style="font-size:14px;color:var(--color-neutral-700)">The builder is the hero; the page answers "what do I want?" in four taps.</span></div>
+<div style="background:var(--color-bg);border:1px solid var(--color-divider)">
+<nav class="nav" style="padding:22px 56px"><span class="nav-brand" style="font-size:30px;font-weight:500">Urban <i>Krave</i></span><span style="font-size:15px">Menu</span><span style="font-size:15px">Mezze</span><span style="font-size:15px">Catering</span><span style="font-size:15px">Story</span><button class="btn btn-primary">Order delivery</button></nav>
+<div style="padding:56px 56px 40px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px">
+<div style="display:flex;flex-direction:column;gap:22px">
+<h1 style="margin:0;font:400 80px/.95 var(--font-heading)">Build your krave in <i style="color:var(--uk-pom)">four moves.</i></h1>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700);font-variant-numeric:tabular-nums">01 · Pick a base</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px"><sc-for list="{{ bases }}" as="b" hint-placeholder-count="4"><button onClick="{{ b.pick }}" style="text-align:left;background:{{ b.bg }};border:1px solid {{ b.bd }};box-shadow:{{ b.ring }};border-radius:var(--radius-md);padding:14px;font-family:var(--font-body);color:var(--color-text);cursor:pointer"><b style="display:block;font:600 20px var(--font-heading)">{{ b.name }}</b><span style="font-size:13px;color:var(--color-neutral-700);font-variant-numeric:tabular-nums">from {{ b.priceTxt }}</span></button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700);font-variant-numeric:tabular-nums">02 · Pick a protein</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px"><sc-for list="{{ proteins }}" as="p" hint-placeholder-count="4"><button onClick="{{ p.pick }}" style="text-align:left;background:{{ p.bg }};border:1px solid {{ p.bd }};box-shadow:{{ p.ring }};border-radius:var(--radius-md);padding:14px;font-family:var(--font-body);color:var(--color-text);cursor:pointer"><b style="display:block;font:600 20px var(--font-heading)">{{ p.name }}</b><span style="font-size:13px;color:var(--color-neutral-700)">{{ p.sub }}</span></button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700);font-variant-numeric:tabular-nums">03 · Sauce it · 04 · Top it</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ sauces }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" aria-pressed="{{ s.on }}" style="background:{{ s.bg }};border:1px solid {{ s.bd }};color:{{ s.fg }};border-radius:999px;padding:8px 14px;font:14px var(--font-body);cursor:pointer">{{ s.label }}</button></sc-for></div></div>
+<div style="display:flex;align-items:center;gap:16px;border-top:1px solid var(--color-divider);padding-top:18px"><div style="flex:1"><div style="font:500 24px var(--font-heading)">{{ buildName }}</div><div style="font-size:14px;color:var(--color-neutral-700)">{{ buildSummary }}</div></div><span style="font:500 32px var(--font-heading);font-variant-numeric:tabular-nums">{{ buildPrice }}</span><button class="btn btn-primary" style="padding:14px 20px;font-size:15px">Order this →</button></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:14px"><div class="plate" style="height:520px;position:relative"><image-slot id="uk-b-hero" shape="rect" style="position:absolute;inset:0" placeholder="Hero: chicken rice plate, saffron rice, shawarma, salad, tahini drizzle"></image-slot></div><div style="font-size:13px;color:var(--color-neutral-700);font-style:italic;text-align:center">Pictured: the chicken rice plate, garlic toum, extra pickles. A strong choice.</div></div>
+</div>
+<hr class="hr" style="margin:0 56px">
+<div style="padding:48px 56px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="margin:0;font:400 52px/1 var(--font-heading)">Or skip the thinking</h2><span style="font-size:14px;color:var(--color-neutral-700)">Seattle's most-ordered, this month</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<sc-for list="{{ favorites }}" as="it" hint-placeholder-count="4">
+<div class="card" style="padding:12px;gap:10px"><div class="plate" style="height:190px;position:relative"><image-slot id="uk-b-{{ it.id }}" shape="rect" style="position:absolute;inset:0" placeholder="{{ it.name }}"></image-slot></div><div class="card-title" style="font-size:22px">{{ it.name }}</div><p class="card-body" style="font-size:13px">{{ it.desc }}</p><div class="card-meta" style="font-size:13px;justify-content:space-between"><span style="font-variant-numeric:tabular-nums;color:var(--color-text)">{{ it.priceTxt }}</span><span style="color:var(--color-accent-700)">{{ it.marks }}</span></div></div>
+</sc-for>
+</div>
+</div>
+<div style="padding:52px 56px;background:var(--uk-pom);color:#FFF4E6;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:48px">
+<h2 style="margin:0;font:400 48px/1.02 var(--font-heading)">Garlic sauce is a <i style="color:var(--uk-saffron)">love language.</i></h2>
+<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px">
+<div style="display:flex;flex-direction:column;gap:6px;border-left:2px solid var(--uk-saffron);padding-left:12px"><b style="font:600 20px var(--font-heading)">Toum</b><span style="font-size:13px;color:#FAD9CF">Whipped garlic. Unapologetic.</span></div>
+<div style="display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,244,230,.45);padding-left:12px"><b style="font:600 20px var(--font-heading)">Tahini</b><span style="font-size:13px;color:#FAD9CF">Nutty, lemony, smooth.</span></div>
+<div style="display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,244,230,.45);padding-left:12px"><b style="font:600 20px var(--font-heading)">Tzatziki</b><span style="font-size:13px;color:#FAD9CF">Cool yogurt, cucumber, dill.</span></div>
+<div style="display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,244,230,.45);padding-left:12px"><b style="font:600 20px var(--font-heading)">Harissa</b><span style="font-size:13px;color:#FAD9CF">Smoky chili. Brings the heat.</span></div>
+<div style="display:flex;flex-direction:column;gap:6px;border-left:1px solid rgba(255,244,230,.45);padding-left:12px"><b style="font:600 20px var(--font-heading)">Amba</b><span style="font-size:13px;color:#FAD9CF">Tangy mango pickle. Cult favorite.</span></div>
+</div>
+</div>
+<div style="padding:48px 56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px">
+<div class="card" style="padding:28px;gap:10px;background:var(--uk-saffron-100);border-color:var(--uk-saffron)"><div class="card-kicker" style="font-size:12px">Delivery</div><div class="card-title" style="font-size:28px;font-weight:500">Hot to your door, 11am–11pm.</div><p class="card-body" style="font-size:14px;line-height:1.6">Order Urban Krave on DoorDash or Uber Eats anywhere in our Seattle delivery zone.</p><div style="display:flex;gap:8px"><button class="btn btn-primary">DoorDash</button><button class="btn btn-primary">Uber Eats</button></div></div>
+<div class="card" style="padding:28px;gap:10px;background:var(--uk-olive-100);border-color:var(--uk-olive-100)"><div class="card-kicker" style="font-size:12px;color:var(--uk-olive)">Catering</div><div class="card-title" style="font-size:28px;font-weight:500">Trays that start conversations.</div><p class="card-body" style="font-size:14px;line-height:1.6">Build-your-own shawarma bars and mezze boards for 10 to 150 people.</p><div><button class="btn btn-secondary">Get a quote</button></div></div>
+<div class="card" style="padding:28px;gap:10px;background:var(--uk-sea-100);border-color:var(--uk-sea-100)"><div class="card-kicker" style="font-size:12px;color:var(--uk-sea)">Just for kids</div><div class="card-title" style="font-size:28px;font-weight:500">Tiny plates, zero complaints.</div><p class="card-body" style="font-size:14px;line-height:1.6">Kids chicken plate with rice and fries, or a mini falafel pita. Juice or ayran included.</p><div><button class="btn btn-secondary">See kids meals</button></div></div>
+</div>
+<footer style="border-top:1px solid var(--color-divider);padding:28px 56px;display:flex;justify-content:space-between;font-size:14px;color:var(--color-neutral-700)"><span style="font:500 22px var(--font-heading);color:var(--color-text)">Urban <i>Krave</i></span><span>Delivery-only kitchen · Seattle, WA</span><span>Menu · Catering · Allergens · Contact</span></footer>
+</div>
+</div>
+
+</div>
+</section>
+
+<section style="padding:0 64px 96px;display:flex;flex-direction:column;gap:24px;font-family:var(--font-body);color:var(--color-text)">
+<div style="display:flex;flex-direction:column;gap:6px"><div style="font:400 36px var(--font-heading)">Site pages</div><div style="font-size:15px;color:var(--color-neutral-700);max-width:900px">S3 and S4 (cart, checkout, tracking) assume direct ordering on your own site. Your answers said menu-only with DoorDash / Uber Eats links, so treat these as an optional phase 2, or I can drop them.</div></div>
+<div style="display:flex;gap:64px;align-items:flex-start;flex-wrap:wrap">
+
+<!-- S1 MENU -->
+<div data-screen-label="S1 Menu" style="width:1280px;flex:none;background:var(--color-bg);border:1px solid var(--color-divider)">
+<nav class="nav" style="padding:22px 56px"><span class="nav-brand" style="font-size:30px;font-weight:500">Urban <i>Krave</i></span><span style="font-size:15px;color:var(--uk-pom)">Menu</span><span style="font-size:15px">Build your own</span><span style="font-size:15px">Catering</span><span style="font-size:15px">Our story</span><button class="btn btn-primary">Order delivery</button></nav>
+<div style="padding:44px 56px 20px;display:flex;justify-content:space-between;align-items:end"><div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">S1 · The full menu</div><h1 style="margin:6px 0 0;font:400 72px/1 var(--font-heading)">{{ catTitle }}</h1></div>
+<div style="display:flex;gap:8px"><sc-for list="{{ diet }}" as="d" hint-placeholder-count="2"><button onClick="{{ d.pick }}" aria-pressed="{{ d.on }}" style="background:{{ d.bg }};border:1px solid {{ d.bd }};color:{{ d.fg }};border-radius:var(--radius-md);padding:10px 14px;font:14px var(--font-body);cursor:pointer">{{ d.label }}</button></sc-for></div></div>
+<div style="padding:0 56px;display:flex;gap:0;border-bottom:1px solid var(--color-divider);flex-wrap:wrap"><sc-for list="{{ cats }}" as="c" hint-placeholder-count="10"><button onClick="{{ c.pick }}" style="background:transparent;border:0;border-bottom:2px solid {{ c.bd }};color:{{ c.fg }};padding:12px 14px;font:15px var(--font-body);cursor:pointer">{{ c.name }}</button></sc-for></div>
+<div style="padding:32px 56px 56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+<sc-if value="{{ menuEmpty }}" hint-placeholder-val="{{ false }}"><div style="grid-column:1/-1;border:1px dashed var(--color-divider);padding:40px;text-align:center;color:var(--color-neutral-700)">Nothing here matches those filters. Try removing one.</div></sc-if>
+<sc-for list="{{ menuItems }}" as="it" hint-placeholder-count="6">
+<div class="card" style="padding:12px;gap:10px"><div class="plate" style="height:180px;position:relative"><image-slot id="uk-m-{{ it.id }}" shape="rect" style="position:absolute;inset:0" placeholder="{{ it.name }}"></image-slot></div>
+<div class="card-kicker" style="font-size:11px">{{ it.cat }}</div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><div class="card-title" style="font-size:22px">{{ it.name }}</div><span style="font-variant-numeric:tabular-nums;font-size:15px">{{ it.priceTxt }}</span></div>
+<p class="card-body" style="font-size:13px;line-height:1.5">{{ it.desc }}</p>
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="display:flex;gap:6px"><sc-for list="{{ it.tags }}" as="t"><span class="tag tag-accent">{{ t }}</span></sc-for></div><button class="btn btn-ghost">Order →</button></div></div>
+</sc-for>
+</div>
+<div style="margin:0 56px 48px;border-top:1px solid var(--color-divider);padding-top:18px;font-size:13px;color:var(--color-neutral-700)">VG vegan · GF gluten-free · 🌶 spicy. Our kitchen handles wheat, sesame, dairy and tree nuts. <a href="#">Full allergen guide</a>.</div>
+</div>
+
+<!-- S2 BUILDER -->
+<div data-screen-label="S2 Build your own" style="width:1280px;flex:none;background:var(--color-bg);border:1px solid var(--color-divider);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)">
+<div style="padding:44px 56px;display:flex;flex-direction:column;gap:26px;border-right:1px solid var(--color-divider)">
+<div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">S2 · Build your own</div><h1 style="margin:6px 0 0;font:400 60px/1 var(--font-heading)">Make it exactly how you <i style="color:var(--uk-pom)">krave</i> it.</h1></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between"><b style="font:600 22px var(--font-heading)">1. Base</b><span style="font-size:13px;color:var(--color-neutral-700)">Required · pick 1</span></div><div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px"><sc-for list="{{ bases }}" as="b" hint-placeholder-count="4"><button onClick="{{ b.pick }}" style="text-align:left;background:{{ b.bg }};border:1px solid {{ b.bd }};box-shadow:{{ b.ring }};border-radius:var(--radius-md);padding:12px;font-family:var(--font-body);color:var(--color-text);cursor:pointer"><b style="display:block;font:600 19px var(--font-heading)">{{ b.name }}</b><span style="font-size:12px;color:var(--color-neutral-700)">{{ b.sub }}</span></button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between"><b style="font:600 22px var(--font-heading)">2. Protein</b><span style="font-size:13px;color:var(--color-neutral-700)">Required · pick 1</span></div><div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px"><sc-for list="{{ proteins }}" as="p" hint-placeholder-count="4"><button onClick="{{ p.pick }}" style="text-align:left;background:{{ p.bg }};border:1px solid {{ p.bd }};box-shadow:{{ p.ring }};border-radius:var(--radius-md);padding:12px;font-family:var(--font-body);color:var(--color-text);cursor:pointer"><b style="display:block;font:600 19px var(--font-heading)">{{ p.name }}</b><span style="font-size:12px;color:var(--color-neutral-700)">{{ p.priceSub }}</span></button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between"><b style="font:600 22px var(--font-heading)">3. Sauces</b><span style="font-size:13px;color:var(--color-neutral-700)">Up to 2 · {{ sauceCount }} chosen</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ sauces }}" as="s" hint-placeholder-count="5"><button onClick="{{ s.pick }}" aria-pressed="{{ s.on }}" style="background:{{ s.bg }};border:1px solid {{ s.bd }};color:{{ s.fg }};border-radius:999px;padding:9px 15px;font:14px var(--font-body);cursor:pointer">{{ s.label }}</button></sc-for></div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="display:flex;justify-content:space-between"><b style="font:600 22px var(--font-heading)">4. Toppings</b><span style="font-size:13px;color:var(--color-neutral-700)">As many as you like</span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><sc-for list="{{ toppings }}" as="s" hint-placeholder-count="8"><button onClick="{{ s.pick }}" aria-pressed="{{ s.on }}" style="background:{{ s.bg }};border:1px solid {{ s.bd }};color:{{ s.fg }};border-radius:999px;padding:9px 15px;font:14px var(--font-body);cursor:pointer">{{ s.label }}</button></sc-for></div></div>
+<div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-note" style="font-size:13px">Special instructions</label><input id="uk-note" class="input" placeholder="e.g. sauce on the side, extra crispy falafel"></div>
+</div>
+<div style="padding:44px 40px;display:flex;flex-direction:column;gap:18px">
+<div class="plate" style="height:300px;position:relative"><image-slot id="uk-build" shape="rect" style="position:absolute;inset:0" placeholder="Your build: changes with base"></image-slot></div>
+<div style="font:500 34px/1.05 var(--font-heading)">{{ buildName }}</div>
+<div style="font-size:14px;line-height:1.6;color:var(--color-neutral-800)">{{ buildSummary }}</div>
+<div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--color-divider);padding-top:14px;font-size:14px;font-variant-numeric:tabular-nums">
+<sc-for list="{{ buildLines }}" as="l" hint-placeholder-count="3"><div style="display:flex;justify-content:space-between"><span>{{ l.label }}</span><span>{{ l.price }}</span></div></sc-for>
+<div style="display:flex;justify-content:space-between;border-top:1px solid var(--color-text);padding-top:10px;margin-top:6px;font:500 26px var(--font-heading)"><span>Total</span><span>{{ buildPrice }}</span></div></div>
+<button class="btn btn-primary btn-block" style="padding:16px;font-size:16px">Add to bag · {{ buildPrice }}</button>
+<div style="font-size:12px;color:var(--color-neutral-700);text-align:center">Marketplace-only mode: this button sends you to the same build on DoorDash or Uber Eats.</div>
+</div>
+</div>
+
+<!-- S3 CART & CHECKOUT -->
+<div data-screen-label="S3 Cart and checkout" style="width:1280px;flex:none;background:var(--color-bg);border:1px solid var(--color-divider)">
+<nav class="nav" style="padding:22px 56px"><span class="nav-brand" style="font-size:30px;font-weight:500">Urban <i>Krave</i></span><span style="font-size:14px;color:var(--color-neutral-700)">Secure checkout</span></nav>
+<div style="padding:40px 56px 56px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px">
+<div style="display:flex;flex-direction:column;gap:28px">
+<div><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">S3 · Checkout · phase 2</div><h1 style="margin:6px 0 0;font:400 56px/1 var(--font-heading)">Almost krave time.</h1></div>
+<div style="display:flex;justify-content:space-between;align-items:center;border:1px solid var(--color-divider);border-radius:var(--radius-md);padding:14px 18px"><span style="font-size:15px">Checking out as a guest.</span><button class="btn btn-secondary">Sign in</button></div>
+<div style="display:flex;flex-direction:column;gap:14px"><b style="font:600 24px var(--font-heading);border-bottom:1px solid var(--color-divider);padding-bottom:8px">Delivery</b>
+<div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-addr" style="font-size:13px">Delivery address</label><input id="uk-addr" class="input" value="1420 NW 56th St, Apt 3"></div>
+<div class="seg"><span class="seg-opt" style="border-right:1px solid var(--color-divider);color:var(--color-accent-700)">● ASAP · 30–40 min</span><span class="seg-opt">○ Schedule for later</span></div>
+<div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-drop" style="font-size:13px">Drop-off note</label><input id="uk-drop" class="input" placeholder="Buzzer, gate code, leave at door…"></div></div>
+<div style="display:flex;flex-direction:column;gap:14px"><b style="font:600 24px var(--font-heading);border-bottom:1px solid var(--color-divider);padding-bottom:8px">Contact</b>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px"><div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-name" style="font-size:13px">Name</label><input id="uk-name" class="input" value="Maya Haddad"></div><div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-phone" style="font-size:13px">Mobile</label><input id="uk-phone" class="input" value="(206) 555-0187"></div></div></div>
+<div style="display:flex;flex-direction:column;gap:14px"><b style="font:600 24px var(--font-heading);border-bottom:1px solid var(--color-divider);padding-bottom:8px">Payment</b>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px"><button class="btn btn-primary">Card</button><button class="btn btn-secondary">Apple Pay</button><button class="btn btn-secondary">Google Pay</button><button class="btn btn-secondary">Gift card</button></div>
+<div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px"><input class="input" aria-label="Card number" placeholder="Card number"><input class="input" aria-label="Expiry" placeholder="MM / YY"><input class="input" aria-label="CVC" placeholder="CVC"></div></div>
+</div>
+<div class="card elev-sm" style="padding:28px;gap:14px;align-self:start">
+<div class="card-title" style="font-size:30px;font-weight:500">Your bag</div>
+<div style="display:flex;flex-direction:column;gap:12px;font-size:15px">
+<div style="display:flex;justify-content:space-between;gap:12px"><div><b>Beef shawarma wrap</b><div style="font-size:13px;color:var(--color-neutral-700)">Toum, pickles, fries inside</div></div><span style="font-variant-numeric:tabular-nums">$14.49</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><div><b>Falafel rice plate</b> <span class="tag tag-accent">VG</span><div style="font-size:13px;color:var(--color-neutral-700)">Tahini, harissa</div></div><span style="font-variant-numeric:tabular-nums">$14.49</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><div><b>Mint lemonade</b> × 2</div><span style="font-variant-numeric:tabular-nums">$9.98</span></div></div>
+<div style="border-top:1px solid var(--color-divider);padding-top:12px;display:flex;flex-direction:column;gap:8px"><span style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent-700)">Finish strong</span><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag tag-outline">+ Baklava $5.49</span><span class="tag tag-outline">+ Hummus $6.99</span><span class="tag tag-outline">+ Extra toum $0.99</span></div></div>
+<div style="display:grid;grid-template-columns:1fr auto;gap:8px"><input class="input" aria-label="Promo code" placeholder="Promo code"><button class="btn btn-secondary">Apply</button></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:13px">Tip your driver</span><div class="seg"><span class="seg-opt" style="border-right:1px solid var(--color-divider)">None</span><span class="seg-opt" style="border-right:1px solid var(--color-divider)">15%</span><span class="seg-opt" style="border-right:1px solid var(--color-divider);color:var(--color-accent-700);background:var(--color-accent-100)">18%</span><span class="seg-opt">20%</span></div></div>
+<div style="border-top:1px solid var(--color-divider);padding-top:12px;display:flex;flex-direction:column;gap:6px;font-size:14px;font-variant-numeric:tabular-nums;color:var(--color-neutral-800)">
+<div style="display:flex;justify-content:space-between"><span>Subtotal</span><span>$38.96</span></div><div style="display:flex;justify-content:space-between"><span>Delivery fee</span><span>$2.99</span></div><div style="display:flex;justify-content:space-between"><span>Tax</span><span>$4.03</span></div><div style="display:flex;justify-content:space-between"><span>Tip (18%)</span><span>$7.01</span></div>
+<div style="display:flex;justify-content:space-between;border-top:1px solid var(--color-text);padding-top:10px;margin-top:4px;font:500 26px var(--font-heading);color:var(--color-text)"><span>Total</span><span>$52.99</span></div></div>
+<button class="btn btn-primary btn-block" style="padding:16px;font-size:16px">Place order · $52.99</button>
+</div>
+</div>
+</div>
+
+<!-- S4 TRACKING -->
+<div data-screen-label="S4 Tracking" style="width:1280px;flex:none;background:var(--color-bg);border:1px solid var(--color-divider)">
+<nav class="nav" style="padding:22px 56px"><span class="nav-brand" style="font-size:30px;font-weight:500">Urban <i>Krave</i></span><span style="font-size:14px;color:var(--color-neutral-700)">Order #UK-3107</span></nav>
+<div style="padding:48px 56px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px">
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">S4 · Order tracking · phase 2 · tap a stage</div>
+<h1 style="margin:0;font:400 76px/.98 var(--font-heading);min-height:150px">{{ stageTitle }}</h1>
+<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 96px/1 var(--font-heading);font-variant-numeric:tabular-nums;color:var(--color-accent-700)">{{ stageEta }}</span><span style="font-size:18px;color:var(--color-neutral-800)">{{ stageEtaLabel }}</span></div>
+<div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px"><sc-for list="{{ stages }}" as="g" hint-placeholder-count="6"><button onClick="{{ g.pick }}" aria-label="{{ g.name }}" style="background:transparent;border:0;padding:10px 0;cursor:pointer"><span style="display:block;height:3px;background:{{ g.bar }}"></span></button></sc-for></div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ stages }}" as="g" hint-placeholder-count="6"><div style="display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--color-divider);font-size:16px;color:{{ g.fg }}"><span>{{ g.mark }}</span><span>{{ g.name }}</span></div></sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:18px">
+<div class="plate" style="height:260px;position:relative"><image-slot id="uk-track" shape="rect" style="position:absolute;inset:0" placeholder="Shawarma being carved off the spit"></image-slot></div>
+<div class="card" style="padding:22px;gap:10px"><div class="card-title" style="font-size:24px">Your order</div><div style="font-size:14px;line-height:1.7;color:var(--color-neutral-800)">Beef shawarma wrap · Falafel rice plate · Mint lemonade × 2</div><div class="card-meta" style="font-size:13px">Delivering to 1420 NW 56th St · Total $52.99</div></div>
+<sc-if value="{{ canCancel }}" hint-placeholder-val="{{ false }}"><div style="font-size:14px;color:var(--color-neutral-800)">You can still cancel. Once the kitchen starts, changes go through support. <button class="btn btn-ghost">Request cancellation</button></div></sc-if>
+<sc-if value="{{ noCancel }}" hint-placeholder-val="{{ true }}"><div style="font-size:14px;color:var(--color-neutral-800)">The kitchen has started your order. For changes, contact support.</div></sc-if>
+<div style="display:flex;gap:10px"><button class="btn btn-secondary">Receipt</button><button class="btn btn-secondary">Help</button><button class="btn btn-primary">Reorder</button></div>
+</div>
+</div>
+</div>
+
+<!-- S5 CATERING -->
+<div data-screen-label="S5 Catering" style="width:1280px;flex:none;background:var(--color-bg);border:1px solid var(--color-divider)">
+<nav class="nav" style="padding:22px 56px"><span class="nav-brand" style="font-size:30px;font-weight:500">Urban <i>Krave</i></span><span style="font-size:15px">Menu</span><span style="font-size:15px;color:var(--color-accent-700)">Catering</span><span style="font-size:15px">Our story</span><button class="btn btn-primary">Get a quote</button></nav>
+<div style="padding:48px 56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center;background:var(--uk-terra-100)">
+<div style="display:flex;flex-direction:column;gap:18px"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">S5 · Catering</div><h1 style="margin:0;font:400 76px/.98 var(--font-heading)">Feed the room. <i style="color:var(--uk-terra)">Win the meeting.</i></h1><p style="margin:0;font-size:17px;line-height:1.6;color:var(--color-neutral-800);text-align:justify">Shawarma bars, falafel platters and mezze boards for offices, birthdays and game days. 10 to 150 people, ordered at least 24 hours ahead, delivered and set up across Seattle.</p></div>
+<div class="plate" style="height:380px;position:relative"><image-slot id="uk-cater" shape="rect" style="position:absolute;inset:0" placeholder="Catering spread: foil trays, rice, shawarma, salads, sauces in cups"></image-slot></div>
+</div>
+<div style="padding:0 56px 48px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px">
+<sc-for list="{{ trays }}" as="t" hint-placeholder-count="4"><div class="card" style="padding:22px;gap:10px"><div class="card-kicker" style="font-size:11px">{{ t.serves }}</div><div class="card-title" style="font-size:26px;font-weight:500">{{ t.name }}</div><p class="card-body" style="font-size:14px;line-height:1.55">{{ t.desc }}</p><div style="display:flex;justify-content:space-between;align-items:center"><span style="font:500 24px var(--font-heading);font-variant-numeric:tabular-nums">{{ t.priceTxt }}</span><span style="font-size:12px;color:var(--color-neutral-700)">{{ t.per }}</span></div></div></sc-for>
+</div>
+<div style="margin:0 56px 56px;border-top:1px solid var(--color-text);padding-top:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:48px">
+<div><h2 style="margin:0;font:400 40px/1.05 var(--font-heading)">Tell us about your event</h2><p style="font-size:14px;color:var(--color-neutral-700);line-height:1.6">We reply within one business day with a quote and menu suggestions.</p></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-c1" style="font-size:13px">Name</label><input id="uk-c1" class="input"></div>
+<div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-c2" style="font-size:13px">Email</label><input id="uk-c2" class="input"></div>
+<div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-c3" style="font-size:13px">Event date</label><input id="uk-c3" class="input" placeholder="MM / DD / YYYY"></div>
+<div class="field" style="display:flex;flex-direction:column;gap:6px"><label for="uk-c4" style="font-size:13px">Guests: {{ guests }}</label><input id="uk-c4" type="range" min="10" max="150" step="5" value="{{ guests }}" onChange="{{ setGuests }}" style="accent-color:var(--color-accent)"></div>
+<div class="field" style="grid-column:span 2;display:flex;flex-direction:column;gap:6px"><label for="uk-c5" style="font-size:13px">Dietary needs &amp; notes</label><input id="uk-c5" class="input" placeholder="e.g. 8 vegan, 2 gluten-free, no nuts"></div>
+<div style="grid-column:span 2;display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;color:var(--color-neutral-800)">Rough estimate for {{ guests }} guests: <b style="font-variant-numeric:tabular-nums">{{ guestEstimate }}</b></span><button class="btn btn-primary" style="padding:14px 22px">Request a quote</button></div>
+</div>
+</div>
+</div>
+
+<!-- S6 ABOUT -->
+<div data-screen-label="S6 Our story" style="width:1280px;flex:none;background:var(--color-bg);border:1px solid var(--color-divider)">
+<nav class="nav" style="padding:22px 56px"><span class="nav-brand" style="font-size:30px;font-weight:500">Urban <i>Krave</i></span><span style="font-size:15px">Menu</span><span style="font-size:15px">Catering</span><span style="font-size:15px;color:var(--color-accent-700)">Our story</span><button class="btn btn-primary">Order delivery</button></nav>
+<div style="padding:64px 56px 40px;display:flex;flex-direction:column;gap:14px;max-width:900px"><div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-accent-700)">S6 · Our story</div><h1 style="margin:0;font:400 84px/.96 var(--font-heading)">No dining room. <i style="color:var(--uk-pom)">All flavor.</i></h1></div>
+<div style="padding:0 56px"><div class="plate" style="height:440px;position:relative"><image-slot id="uk-about" shape="rect" style="position:absolute;inset:0" placeholder="The kitchen team at the shawarma spit, warm light"></image-slot></div></div>
+<div style="padding:48px 56px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px">
+<p style="margin:0;font-size:17px;line-height:1.75;text-align:justify;color:var(--color-neutral-800)">Urban Krave started with a simple complaint: great Mediterranean food in Seattle was either a sit-down dinner or a soggy delivery. So we built a kitchen that only does delivery, and designed every dish to travel. Wraps are pressed so they hold together. Sauces ride in their own cups. Falafel is fried the minute your order lands.</p>
+<p style="margin:0;font-size:17px;line-height:1.75;text-align:justify;color:var(--color-neutral-800)">The recipes come from family tables in Beirut, Amman and Istanbul, adjusted for a city that likes its greens and its heat. Chicken and beef shawarma turn on the spit all day, toum is whipped every morning, and the baklava is made in small batches with honey from a farm near Woodinville.</p>
+</div>
+<div style="padding:40px 56px;background:var(--uk-olive);color:#FBF4E8;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px">
+<div><b style="font:500 28px var(--font-heading)">Made to travel</b><p style="margin:6px 0 0;font-size:14px;line-height:1.6;color:#E6EDD5">Packaging and recipes tested for a 30-minute ride.</p></div>
+<div><b style="font:500 28px var(--font-heading)">Halal meats</b><p style="margin:6px 0 0;font-size:14px;line-height:1.6;color:#E6EDD5">All chicken and beef are halal-certified.</p></div>
+<div><b style="font:500 28px var(--font-heading)">Plant-forward</b><p style="margin:6px 0 0;font-size:14px;line-height:1.6;color:#E6EDD5">Every dish has a vegan falafel option.</p></div>
+</div>
+</div>
+
+</div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const $ = n => '$' + n.toFixed(2);
+const MENU = [
+ {id:'cw',cat:'Wraps',name:'Chicken Shawarma Wrap',price:12.49,desc:'Garlic toum, pickles, tomato, fries tucked inside.',v:0,gf:0},
+ {id:'bw',cat:'Wraps',name:'Beef Shawarma Wrap',price:13.49,desc:'Tahini, onion-sumac, parsley, pickled turnip.',v:0,gf:0},
+ {id:'fw',cat:'Wraps',name:'Falafel Wrap',price:11.49,desc:'Crispy falafel, tahini, tomato, cucumber, mint.',v:1,gf:0},
+ {id:'cr',cat:'Rice plates',name:'Chicken Rice Plate',price:15.99,desc:'Saffron rice, shawarma, fattoush, hummus, pita.',v:0,gf:0},
+ {id:'br',cat:'Rice plates',name:'Beef Rice Plate',price:16.99,desc:'Saffron rice, beef shawarma, tabbouleh, tahini.',v:0,gf:0},
+ {id:'fr',cat:'Rice plates',name:'Falafel Rice Plate',price:14.49,desc:'Five falafel, rice, salad, hummus, harissa.',v:1,gf:1},
+ {id:'mg',cat:'Rice plates',name:'Mixed Grill Plate',price:18.99,desc:'Chicken and beef shawarma, both sauces, all the pickles.',v:0,gf:0,spicy:0},
+ {id:'cs',cat:'Salad bowls',name:'Chicken Salad Bowl',price:14.99,desc:'Greens, cucumber, tomato, pickled onion, pita chips.',v:0,gf:0},
+ {id:'bs',cat:'Salad bowls',name:'Beef Salad Bowl',price:15.99,desc:'Greens, tabbouleh, feta, sumac vinaigrette.',v:0,gf:1},
+ {id:'fs',cat:'Salad bowls',name:'Falafel Salad Bowl',price:13.49,desc:'Greens, falafel, tahini, pomegranate, herbs.',v:1,gf:1},
+ {id:'csp',cat:'Shawarma plates',name:'Chicken Shawarma Plate',price:16.49,desc:'Shawarma, fries, garlic toum, pickles, pita.',v:0,gf:0},
+ {id:'bsp',cat:'Shawarma plates',name:'Beef Shawarma Plate',price:17.49,desc:'Shawarma, fries, tahini, grilled tomato, pita.',v:0,gf:0},
+ {id:'hu',cat:'Mezze & dips',name:'Hummus',price:6.99,desc:'Silky chickpea, tahini, olive oil, warm pita.',v:1,gf:1},
+ {id:'bg',cat:'Mezze & dips',name:'Baba Ghanoush',price:7.49,desc:'Smoked eggplant, garlic, pomegranate.',v:1,gf:1},
+ {id:'tz',cat:'Mezze & dips',name:'Tzatziki',price:5.99,desc:'Greek yogurt, cucumber, dill.',v:0,gf:1},
+ {id:'mu',cat:'Mezze & dips',name:'Muhammara',price:7.49,desc:'Roasted pepper, walnut, pomegranate molasses.',v:1,gf:0,spicy:1},
+ {id:'mt',cat:'Mezze & dips',name:'Mezze Trio',price:15.99,desc:'Any three dips with a stack of pita.',v:1,gf:0},
+ {id:'ff',cat:'Sides',name:'Za\'atar Fries',price:5.49,desc:'Crispy fries, za\'atar, sea salt, toum to dip.',v:1,gf:1},
+ {id:'sr',cat:'Sides',name:'Saffron Rice',price:3.99,desc:'Fluffy basmati with saffron and vermicelli.',v:1,gf:0},
+ {id:'gl',cat:'Sides',name:'Grape Leaves',price:6.49,desc:'Six dolmas with rice, herbs and lemon.',v:1,gf:1},
+ {id:'pi',cat:'Sides',name:'Warm Pita',price:1.99,desc:'Two rounds, brushed with olive oil.',v:1,gf:0},
+ {id:'ft',cat:'Sides',name:'Fattoush',price:6.99,desc:'Crunchy salad, sumac, fried pita.',v:1,gf:0},
+ {id:'kc',cat:'Kids',name:'Kids Chicken Plate',price:8.99,desc:'Shawarma, rice, fries, juice or ayran.',v:0,gf:0},
+ {id:'kf',cat:'Kids',name:'Mini Falafel Pita',price:7.99,desc:'Three falafel, hummus, cucumber.',v:1,gf:0},
+ {id:'fam',cat:'Family & trays',name:'Family Feast',price:64.99,desc:'Serves 4. Mixed shawarma, rice, salad, two dips, pita.',v:0,gf:0},
+ {id:'wt',cat:'Family & trays',name:'Wrap Tray',price:129.00,desc:'12 wraps, cut in half. Mix chicken, beef, falafel.',v:0,gf:0},
+ {id:'bk',cat:'Desserts',name:'Baklava',price:5.49,desc:'Four pieces, pistachio and local honey.',v:0,gf:0},
+ {id:'ku',cat:'Desserts',name:'Kunafa',price:7.99,desc:'Warm shredded pastry, sweet cheese, orange blossom.',v:0,gf:0},
+ {id:'ml',cat:'Drinks',name:'Mint Lemonade',price:4.99,desc:'Fresh lemon, mint, blended with ice.',v:1,gf:1},
+ {id:'ay',cat:'Drinks',name:'Ayran',price:3.49,desc:'Salted yogurt drink. Cool and tangy.',v:0,gf:1},
+ {id:'tc',cat:'Drinks',name:'Turkish Coffee',price:3.99,desc:'Cardamom, strong, unfiltered.',v:1,gf:1},
+ {id:'hb',cat:'Drinks',name:'Hibiscus Iced Tea',price:3.99,desc:'Tart, floral, lightly sweetened.',v:1,gf:1},
+];
+const CATS = ['All','Wraps','Rice plates','Salad bowls','Shawarma plates','Mezze & dips','Sides','Kids','Family & trays','Desserts','Drinks'];
+const BASES = [{name:'Wrap',price:11.49,sub:'Saj bread, pressed'},{name:'Rice plate',price:14.49,sub:'Saffron rice, salad, pita'},{name:'Salad bowl',price:13.49,sub:'Greens, pita chips'},{name:'Shawarma plate',price:15.49,sub:'Fries, pickles, pita'}];
+const PROTEINS = [{name:'Chicken',add:0,sub:'Shawarma'},{name:'Beef',add:1.5,sub:'Shawarma'},{name:'Falafel',add:-1,sub:'Vegan · GF'},{name:'Mixed',add:2.5,sub:'Chicken + beef'}];
+const SAUCES = ['Garlic toum','Tahini','Tzatziki','Harissa 🌶','Amba'];
+const TOPS = [['Tomato',0],['Cucumber',0],['Pickled turnip',0],['Pickles',0],['Onion-sumac',0],['Parsley',0],['Feta',1],['Fries inside',1],['Extra protein',3.99],['Hummus',1.5]];
+const STAGES = ['Order received','In the kitchen','Off the spit','Wrapped & packed','Out for delivery','Delivered'];
+const TITLES = ['Got it. Krave confirmed.','Pans are hot. So are we.','Shawarma is being carved. Stay strong.','Wrapped tight, sauces on the side.','On its way. Clear the table.','Delivered. Go, go, go.'];
+const ETAS = [38,32,24,18,9,0];
+const TRAYS = [
+ {serves:'Serves 10',name:'Shawarma Bar',price:189,per:'$18.90 / guest',desc:'Chicken and beef shawarma, rice, salad, pita, three sauces, pickles.'},
+ {serves:'Serves 10',name:'Falafel Platter',price:149,per:'$14.90 / guest',desc:'40 falafel, hummus, tabbouleh, pita, tahini. Fully vegan.'},
+ {serves:'Serves 12',name:'Wrap Tray',price:129,per:'$10.75 / guest',desc:'12 wraps cut in half, any mix, with za\'atar fries.'},
+ {serves:'Serves 10',name:'Mezze Board',price:99,per:'$9.90 / guest',desc:'Four dips, grape leaves, olives, crudités, pita.'},
+];
+const marks = it => [it.v?'VG':'', it.gf?'GF':'', it.spicy?'🌶':''].filter(Boolean);
+const on = '1px solid var(--color-accent)', off = '1px solid var(--color-divider)';
+class Component extends DCLogic {
+  state = { cat:0, veg:false, gf:false, base:0, protein:1, sauces:['Garlic toum'], tops:['Pickles','Pickled turnip','Fries inside'], stage:2, guests:40 };
+  toggle(key,val,max){ this.setState(s=>{ const has=s[key].includes(val); if(!has && max && s[key].length>=max) return null; return {[key]: has ? s[key].filter(x=>x!==val) : [...s[key],val]}; }); }
+  renderVals() {
+    const s = this.state, v = {};
+    const fmt = it => ({...it, priceTxt:$(it.price), marks:marks(it).join(' '), tags:marks(it)});
+    v.cardCols = [['Wraps','Pressed on the grill, cut on the bias.'],['Rice plates','The full sit-down, in a box.'],['Salad bowls','Greens with actual personality.']].map(([name,blurb])=>({name,blurb,items:MENU.filter(m=>m.cat===name).map(fmt)}));
+    v.favorites = ['bw','fr','cs','mt'].map(id=>fmt(MENU.find(m=>m.id===id)));
+    v.mezze = MENU.filter(m=>m.cat==='Mezze & dips'||m.id==='gl').map(fmt);
+    v.cats = CATS.map((name,i)=>({name,bd:i===s.cat?'var(--uk-pom)':'transparent',fg:i===s.cat?'var(--uk-pom-700)':'var(--color-text)',pick:()=>this.setState({cat:i})}));
+    v.catTitle = s.cat===0 ? 'Everything we make' : CATS[s.cat];
+    v.diet = [['veg','Vegan only'],['gf','Gluten-free only']].map(([k,l])=>({label:(s[k]?'✓ ':'')+l,on:s[k],bg:s[k]?'var(--uk-olive)':'transparent',bd:s[k]?'var(--uk-olive)':'var(--color-divider)',fg:s[k]?'#fff':'var(--color-text)',pick:()=>this.setState(st=>({[k]:!st[k]}))}));
+    const list = MENU.filter(m=>(s.cat===0||m.cat===CATS[s.cat]) && (!s.veg||m.v) && (!s.gf||m.gf));
+    v.menuItems = (s.cat===0 ? list.slice(0,9) : list).map(fmt); v.menuEmpty = list.length===0;
+    // builder
+    const B = BASES[s.base], P = PROTEINS[s.protein];
+    const ring = sel => sel ? 'inset 0 0 0 1px var(--color-accent)' : 'none';
+    v.bases = BASES.map((b,i)=>({...b,priceTxt:$(b.price),bg:i===s.base?'var(--uk-saffron)':'transparent',bd:i===s.base?'var(--color-accent)':'var(--color-divider)',ring:ring(i===s.base),pick:()=>this.setState({base:i})}));
+    v.proteins = PROTEINS.map((p,i)=>({...p,priceSub:p.add===0?p.sub+' · incl.':`${p.sub} · ${p.add>0?'+':'−'}${$(Math.abs(p.add))}`,bg:i===s.protein?'var(--uk-saffron)':'transparent',bd:i===s.protein?'var(--color-accent)':'var(--color-divider)',ring:ring(i===s.protein),pick:()=>this.setState({protein:i})}));
+    v.sauces = SAUCES.map(n=>{const o=s.sauces.includes(n);return {label:(o?'✓ ':'')+n,on:o,bg:o?'var(--uk-pom)':'transparent',bd:o?'var(--uk-pom)':'var(--color-divider)',fg:o?'#fff':'var(--color-text)',pick:()=>this.toggle('sauces',n,2)};});
+    v.toppings = TOPS.map(([n,p])=>{const o=s.tops.includes(n);return {label:(o?'✓ ':'')+n+(p?` +${$(p)}`:''),on:o,bg:o?'var(--uk-pom)':'transparent',bd:o?'var(--uk-pom)':'var(--color-divider)',fg:o?'#fff':'var(--color-text)',pick:()=>this.toggle('tops',n)};});
+    v.sauceCount = s.sauces.length;
+    const extras = TOPS.filter(([n,p])=>p && s.tops.includes(n));
+    const total = B.price + P.add + extras.reduce((a,[,p])=>a+p,0);
+    v.buildName = `${P.name==='Mixed'?'Mixed':P.name} ${B.name.toLowerCase()}`.replace(/^./,c=>c.toUpperCase());
+    v.buildSummary = [s.sauces.join(' + ') || 'No sauce (bold)', s.tops.join(', ')].filter(Boolean).join(' · ');
+    v.buildLines = [{label:B.name,price:$(B.price)},{label:P.name+' '+P.sub.toLowerCase(),price:P.add===0?'incl.':(P.add>0?'+':'−')+$(Math.abs(P.add))},...extras.map(([n,p])=>({label:n,price:'+'+$(p)}))];
+    v.buildPrice = $(total);
+    // tracking
+    v.stages = STAGES.map((n,i)=>({name:n,mark:i<s.stage?'✓':i===s.stage?'●':'○',fg:i<=s.stage?'var(--color-text)':'var(--color-neutral-600)',bar:i<=s.stage?'var(--uk-pom)':'var(--color-divider)',pick:()=>this.setState({stage:i})}));
+    v.stageTitle = TITLES[s.stage]; v.stageEta = s.stage===5 ? '✓' : ETAS[s.stage]; v.stageEtaLabel = s.stage===5 ? 'Enjoy. Napkins are in the bag.' : 'minutes until your door';
+    v.canCancel = s.stage===0; v.noCancel = s.stage>0 && s.stage<5;
+    // catering
+    v.trays = TRAYS.map(t=>({...t,priceTxt:$(t.price)}));
+    v.guests = s.guests; v.setGuests = e=>this.setState({guests:+e.target.value});
+    v.guestEstimate = `${$(s.guests*14.5)} – ${$(s.guests*19)}`;
+    return v;
+  }
+}
+</script>
+</body>
+</html>

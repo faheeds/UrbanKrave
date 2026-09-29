@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import Checkout from "@/components/Checkout";
+
+export const metadata: Metadata = { title: "Checkout", robots: { index: false, follow: false } };
+export default function Page() { return <Checkout orderingOpen={process.env.ORDERING_ENABLED === "true"} />; }
