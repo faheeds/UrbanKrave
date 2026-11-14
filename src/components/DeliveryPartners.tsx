@@ -44,7 +44,7 @@ export default function DeliveryPartners() {
   const [uberVerified, setUberVerified] = useState(false);
   const [verificationMessage, setVerificationMessage] = useState("");
   const [verificationError, setVerificationError] = useState("");
-  const [quoteResult, setQuoteResult] = useState<{ feeCents: number; expires: string } | null>(null);
+  const [quoteResult, setQuoteResult] = useState<{ quoteId: string; feeCents: number; expires: string } | null>(null);
   const [quoteError, setQuoteError] = useState("");
 
   async function load(event: React.FormEvent<HTMLFormElement>) {
@@ -125,9 +125,9 @@ export default function DeliveryPartners() {
         body: JSON.stringify({ line1: values.get("line1"), line2: values.get("line2"), city: values.get("city"), state: values.get("state"), postalCode: values.get("postalCode") }),
         cache: "no-store",
       });
-      const body = await response.json() as { feeCents?: number; expires?: string; error?: string };
-      if (!response.ok || typeof body.feeCents !== "number" || !body.expires) throw new Error(body.error || "Uber Direct could not provide a quote.");
-      setQuoteResult({ feeCents: body.feeCents, expires: body.expires });
+      const body = await response.json() as { quoteId?: string; feeCents?: number; expires?: string; error?: string };
+      if (!response.ok || !body.quoteId || typeof body.feeCents !== "number" || !body.expires) throw new Error(body.error || "Uber Direct could not provide a quote.");
+      setQuoteResult({ quoteId: body.quoteId, feeCents: body.feeCents, expires: body.expires });
     } catch (cause) { setQuoteError(cause instanceof Error ? cause.message : "Uber Direct could not provide a quote."); }
     setBusy(false);
   }
@@ -163,7 +163,7 @@ export default function DeliveryPartners() {
           <label>Apartment or suite<input name="line2" autoComplete="address-line2" disabled={!credentials || busy} /></label>
           <div className="delivery-quote-row"><label>City<input name="city" autoComplete="address-level2" defaultValue="Seattle" required disabled={!credentials || busy} /></label><label>State<input name="state" autoComplete="address-level1" defaultValue="WA" maxLength={2} required disabled={!credentials || busy} /></label><label>ZIP code<input name="postalCode" autoComplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?" required disabled={!credentials || busy} /></label></div>
           <button type="submit" className="button secondary" disabled={!credentials || busy}>{busy ? "Checking…" : "Get test quote"}</button>
-          {quoteResult && <p role="status" className="delivery-saved">Estimated delivery fee: {formatCents(quoteResult.feeCents)}. Quote expires {new Date(quoteResult.expires).toLocaleString()}.</p>}
+          {quoteResult && <p role="status" className="delivery-saved">Estimated delivery fee: {formatCents(quoteResult.feeCents)}. Quote expires {new Date(quoteResult.expires).toLocaleString()}. Uber quote reference: <code>{quoteResult.quoteId}</code>.</p>}
           {quoteError && <p role="alert" className="checkout-error">{quoteError}</p>}
           {!credentials && <p className="delivery-verification-note">Sign in below to test a quote.</p>}
         </form>

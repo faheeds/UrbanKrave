@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   if (!parsed.success) return NextResponse.json({ error: "Enter a complete delivery street address, city, state, and ZIP code." }, { status: 400, headers });
   try {
     const quote = await quoteUberDirect(parsed.data);
-    return NextResponse.json({ feeCents: quote.feeCents, expires: quote.expires }, { headers });
+    return NextResponse.json({ quoteId: quote.quoteId, feeCents: quote.feeCents, expires: quote.expires }, { headers });
   } catch (error) {
     return NextResponse.json({ error: error instanceof Error ? error.message : "Uber Direct quote failed." }, { status: 502, headers });
   }
