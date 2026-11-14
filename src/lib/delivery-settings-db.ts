@@ -39,3 +39,17 @@ export async function saveDeliverySettings(settings: Omit<DeliveryAdminSettings,
   if (!rows[0]) throw new Error("Delivery settings migration has not been applied.");
   return fromRow(rows[0]);
 }
+
+export async function initializeDeliverySettings(): Promise<DeliveryAdminSettings> {
+  const sql = orderDb();
+  await sql`CREATE TABLE IF NOT EXISTS delivery_admin_settings (
+    id smallint PRIMARY KEY CHECK (id = 1),
+    paused boolean NOT NULL DEFAULT true,
+    preferred_provider text CHECK (preferred_provider IN ('doordash_drive', 'uber_direct')),
+    doordash_stage text NOT NULL DEFAULT 'not_started' CHECK (doordash_stage IN ('not_started', 'account_created', 'applied', 'sandbox_access', 'production_approved')),
+    uber_stage text NOT NULL DEFAULT 'account_created' CHECK (uber_stage IN ('not_started', 'account_created', 'applied', 'sandbox_access', 'production_approved')),
+    updated_at timestamptz NOT NULL DEFAULT now()
+  )`;
+  await sql`INSERT INTO delivery_admin_settings (id) VALUES (1) ON CONFLICT (id) DO NOTHING`;
+  return getDeliverySettings();
+}

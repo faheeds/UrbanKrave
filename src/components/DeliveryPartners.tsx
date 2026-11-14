@@ -81,6 +81,21 @@ export default function DeliveryPartners() {
     setBusy(false);
   }
 
+  async function initializeSettings() {
+    if (!credentials || busy) return;
+    setBusy(true); setError("");
+    try {
+      const response = await fetch("/api/admin/delivery-settings/setup", { method: "POST", headers: { Authorization: `Basic ${credentials}` }, cache: "no-store" });
+      const body = await response.json() as DeliverySettingsResponse;
+      if (!response.ok || !body.settings) throw new Error(body.error || "Delivery settings could not be initialized.");
+      setSettings(body.settings);
+      setSettingsAvailable(true);
+      setSettingsWarning("");
+      setSaved(true);
+    } catch (cause) { setError(cause instanceof Error ? cause.message : "Delivery settings could not be initialized."); }
+    setBusy(false);
+  }
+
   async function verifyUber() {
     if (!credentials || busy) return;
     setBusy(true); setVerificationError(""); setVerificationMessage(""); setUberVerified(false);
@@ -129,6 +144,7 @@ export default function DeliveryPartners() {
         <h2 id="delivery-admin-access-title">Manage setup progress</h2>
         {!settings ? <form onSubmit={load} className="kitchen-login"><label>Username<input name="user" autoComplete="username" required /></label><label>Password<input name="password" type="password" autoComplete="current-password" required /></label><button className="button primary" disabled={busy}>{busy ? "Checking…" : "Sign in to manage"}</button></form> : <div className="delivery-session"><p>Signed in. You can verify Uber Direct credentials and test a quote below.</p><button type="button" className="button secondary" onClick={() => { setCredentials(""); setSettings(null); setSettingsAvailable(false); setSettingsWarning(""); setSaved(false); setUberVerified(false); setVerificationMessage(""); setVerificationError(""); setQuoteResult(null); setQuoteError(""); }}>Sign out</button></div>}
         {settingsWarning && <p role="status" className="delivery-warning">{settingsWarning}</p>}
+        {credentials && !settingsAvailable && <button type="button" className="button secondary" onClick={initializeSettings} disabled={busy}>{busy ? "Setting up…" : "Finish delivery settings setup"}</button>}
         {error && <p role="alert" className="checkout-error">{error}</p>}
         {saved && <p role="status" className="delivery-saved">Settings saved.</p>}
       </section>
