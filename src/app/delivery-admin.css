@@ -1,0 +1,51 @@
+.delivery-admin-shell{min-height:100vh;background:#fcfaf6;color:#1d1715}
+.admin-top{max-width:1200px;margin:auto;padding:18px 32px;min-height:100px;display:flex;justify-content:space-between;align-items:center;gap:24px;border-bottom:1px solid #d8c8b7;background:transparent}
+.admin-top .brand{font-size:29px}
+.admin-top .brand-mark{width:58px;height:58px}
+.admin-nav{display:flex;align-items:center;gap:34px;flex:none;font:500 15px Arial,Helvetica,sans-serif}
+.admin-nav a{padding:11px 0;border-bottom:2px solid transparent;color:#4c403b}
+.admin-nav a[aria-current=page]{color:#581b2a;border-bottom-color:#581b2a}
+.delivery-admin-page{max-width:1200px;margin:auto;padding:48px 32px 88px}
+.delivery-admin-intro h1{font:500 clamp(54px,5.8vw,78px)/.96 "Cormorant Garamond",Georgia,serif;letter-spacing:-.035em;margin:0 0 10px}
+.delivery-admin-intro p{font:italic 27px/1.2 "Cormorant Garamond",Georgia,serif;margin:0;color:#4d3832}
+.delivery-admin-note{max-width:900px;margin:24px 0 36px;color:#665d58;font-size:13px;line-height:1.65}
+.delivery-providers{border-top:2px solid #ae7d3b}
+.delivery-provider{display:grid;grid-template-columns:250px minmax(0,1fr) 230px;gap:34px;align-items:start;padding:36px 8px 38px;border-bottom:1px solid #cfaa78}
+.delivery-provider-name{padding-right:24px;border-right:1px solid #cfaa78;min-height:100%}
+.delivery-provider-name h2{font:500 42px/.98 "Cormorant Garamond",Georgia,serif;margin:0 0 14px}
+.delivery-status{display:inline-block;padding:6px 12px;background:#f5e9d8;border-radius:20px;color:#714115;font:600 11px Arial,Helvetica,sans-serif;letter-spacing:.02em}
+.delivery-provider-steps h3{font:500 26px/1 "Cormorant Garamond",Georgia,serif;margin:2px 0 12px}
+.delivery-provider-steps ol{margin:0 0 20px;padding-left:23px;display:grid;gap:7px;font-size:13px;line-height:1.5}
+.delivery-provider-steps li{padding-left:4px}
+.delivery-provider-steps li::marker{color:#9d6b2e}
+.delivery-stage,.delivery-settings-controls label{display:grid;gap:7px;max-width:310px;font:600 12px Arial,Helvetica,sans-serif;color:#4c403b}
+.delivery-stage select,.delivery-settings-controls select{width:100%;min-height:39px;padding:7px 11px;border:1px solid #bcae9f;border-radius:3px;background:#fffdfa;color:#241717;font:13px Arial,Helvetica,sans-serif}
+.delivery-stage select:disabled,.delivery-settings-controls select:disabled{background:#f0ebe5;color:#817773;cursor:not-allowed}
+.delivery-stage-help{margin:7px 0 0;color:#776d67;font-size:11px}
+.delivery-provider-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:5px;min-height:43px;padding:9px 12px;background:#581b2a;color:#fffdfa;border-radius:3px;font:600 12px Arial,Helvetica,sans-serif;text-align:center}
+.delivery-provider-link:hover{background:#42121f}
+.delivery-settings{display:grid;grid-template-columns:250px minmax(0,1fr);gap:34px;margin-top:38px;padding:27px 32px;background:#f3e9dc}
+.delivery-settings h2,.delivery-admin-access h2{font:500 36px/1 "Cormorant Garamond",Georgia,serif;margin:0 0 10px}
+.delivery-settings p{margin:0;color:#665d58;font-size:12px;line-height:1.5}
+.delivery-settings-controls{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.delivery-pause{padding-left:25px;border-left:1px solid #cfaa78;font:600 12px Arial,Helvetica,sans-serif}
+.delivery-pause strong{display:block;width:max-content;margin:10px 0 7px;padding:6px 12px;border-radius:20px;background:#581b2a;color:white;font:600 11px Arial,Helvetica,sans-serif}
+.delivery-admin-access{margin:0 0 32px;padding:20px 0 0;border-top:1px solid #d8c8b7}
+.delivery-admin-access h2{font-size:30px}
+.delivery-admin-access>p{font-size:13px;color:#665d58}
+.delivery-session{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.delivery-session p{font-size:13px;color:#665d58}
+.delivery-saved{padding:9px 12px;background:#e7eed8;color:#2e4420}
+.delivery-warning{padding:9px 12px;background:#f5e9d8;color:#714115}
+.delivery-verification{display:grid;grid-template-columns:250px minmax(0,1fr);gap:34px;padding:28px 32px;margin-top:38px;border:1px solid #d8c8b7;background:#fffdfa}
+.delivery-verification h2{font:500 34px/1 "Cormorant Garamond",Georgia,serif;margin:0 0 9px}
+.delivery-verification p{font-size:12px;line-height:1.5;color:#665d58;margin:0}
+.delivery-verification .delivery-saved,.delivery-verification .delivery-verification-note{margin-top:11px}
+.delivery-quote-form{display:grid;gap:12px;max-width:620px}
+.delivery-quote-form label{display:grid;gap:6px;font:600 12px Arial,Helvetica,sans-serif;color:#4c403b}
+.delivery-quote-form input{width:100%;min-width:0;min-height:40px;padding:8px 10px;border:1px solid #bcae9f;border-radius:3px;background:#fffdfa;color:#241717;font:14px Arial,Helvetica,sans-serif}
+.delivery-quote-form input:disabled{background:#f0ebe5;color:#817773}
+.delivery-quote-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(65px,.7fr) minmax(0,1fr);gap:11px}
+.delivery-quote-form .button{justify-self:start;margin-top:5px}
+@media(max-width:900px){.delivery-provider{grid-template-columns:200px minmax(0,1fr);gap:24px}.delivery-provider-link{grid-column:2;justify-self:start;margin-top:0}.delivery-settings,.delivery-verification{grid-template-columns:1fr}.delivery-provider-name h2{font-size:36px}}
+@media(max-width:600px){.admin-top{padding:14px 20px;min-height:0;display:grid;gap:9px}.admin-top .brand{font-size:25px}.admin-top .brand-mark{width:44px;height:44px}.admin-nav{gap:23px;font-size:13px}.admin-nav a{padding:7px 0}.delivery-admin-page{padding:34px 20px 65px}.delivery-admin-intro h1{font-size:54px}.delivery-admin-intro p{font-size:22px}.delivery-admin-note{margin:18px 0 27px}.delivery-provider{display:block;padding:28px 0 30px}.delivery-provider-name h2{font-size:37px;margin-bottom:9px}.delivery-provider-steps ol{margin-bottom:16px}.delivery-provider-link{margin-top:20px}.delivery-verification{padding:23px 20px;gap:16px}.delivery-quote-row{grid-template-columns:1fr 1fr}.delivery-quote-row label:first-child{grid-column:1/-1}.delivery-settings{padding:23px 20px;gap:20px}.delivery-settings-controls{grid-template-columns:1fr;gap:19px}.delivery-pause{padding:0;border:0;border-top:1px solid #cfaa78;padding-top:18px}}
+@media(max-width:600px){.delivery-provider-name{padding:0;border:0;min-height:0;margin-bottom:23px}}

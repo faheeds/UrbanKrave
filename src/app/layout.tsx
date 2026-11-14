@@ -9,6 +9,7 @@ import "./globals.css";
 import "./fix.css";
 import "./landing.css";
 import "./checkout.css";
+import "./delivery-admin.css";
 
 export const metadata: Metadata = {
   title: { default: "Urban Krave | Mediterranean delivery in Seattle", template: "%s | Urban Krave" },

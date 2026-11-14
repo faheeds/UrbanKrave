@@ -19,6 +19,12 @@ Direct ordering is intentionally closed. `ORDERING_ENABLED` defaults to `false`,
 
 Required server variables for launch: `DATABASE_URL`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `KITCHEN_USER`, `KITCHEN_PASSWORD`, `NEXT_PUBLIC_SITE_URL`, and `ORDERING_ENABLED`. Never put Stripe secret keys or database credentials in public variables.
 
+## Delivery partner setup
+
+The kitchen portal has a Delivery partners page at `/kitchen/delivery`. It links to the official DoorDash Drive application and Uber Direct account setup, then lets an authenticated kitchen admin track onboarding progress and choose a planned primary service. These progress labels are self-reported, not proof of an API connection. Website delivery remains paused and the page cannot dispatch a driver.
+
+Apply `database/002_delivery_settings.sql` to the dedicated Urban Krave database before using the saved settings. Uber Direct credentials use the server-only variables `UBER_DIRECT_CUSTOMER_ID`, `UBER_DIRECT_CLIENT_ID`, and `UBER_DIRECT_CLIENT_SECRET`. The admin page can verify the Client ID and Client Secret with Uber and request a delivery quote from the confirmed pickup address at 515 Broadway E, Seattle, WA 98102. Both actions require the kitchen login. Neither action dispatches a courier. DoorDash Drive integration, Uber Direct dispatch and webhooks, payment setup, and an end-to-end test are still required before website ordering can open. Do not enable ordering based on an onboarding progress label or successful quote alone.
+
 ## Source handoff
 
 # Handoff: Urban Krave — "Build First" website
